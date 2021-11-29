@@ -1,0 +1,70 @@
+//1 & 2
+package homework_5;
+abstract class PayCalculator {
+		double payRate;
+		public PayCalculator(double payRate) {
+	}
+	public double computePay(int hour) {
+		return payRate*hour;
+	}
+}
+
+class RegularPay extends PayCalculator{
+RegularPay(double payRate){
+	super(payRate);
+	System.out.println("payRate is working");
+}
+}
+
+class HazardPay extends PayCalculator{
+public HazardPay(double computePay){
+	super(computePay);
+}
+	double computePay() {
+		return(payRate*1.5);
+	}
+}
+//3 & 4
+package homework_5;
+
+abstract class DiscountPolicy{
+	double computeDiscount;
+	abstract double computeDiscount(int count, double itemCost);
+	}
+
+
+class Cost extends DiscountPolicy{
+	double computeDiscount(int count, double itemCost) {
+		{
+			double actualDiscount;
+			actualDiscount = (itemCost*.025);
+					return actualDiscount;
+	}
+}
+	public static void main(String args[]) {
+		Cost trial = new Cost();
+		System.out.print(trial.computeDiscount(10,50));
+	}
+}
+
+class BulkDiscount extends DiscountPolicy{
+	double percent;
+	double minimum;
+	BulkDiscount(int minimum, double percent) {
+		{
+	this.minimum = minimum;
+	this.percent = percent;
+		}}
+	@Override
+	double computeDiscount(int count, double itemCost) {
+		{if (count> minimum) {
+		return (percent/100)*(count*itemCost);
+		}
+		return 0;
+	}
+}
+	public static void main(String[] args) {
+		BulkDiscount test = new BulkDiscount(5,25);
+		System.out.println(test.computeDiscount(5,10));
+	}
+}
